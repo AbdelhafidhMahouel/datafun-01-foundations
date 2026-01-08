@@ -13,20 +13,27 @@
 # WHY-FILE: This data file provides the site structure and settings
 
 site_name: "Project Documentation"
+
 #TODO: Change to your GitHub Pages URL.
 site_url: https://denisecase.github.io/datafun-01-foundations/
+
 #TODO: Change to your GitHub repository URL.
 repo_url: https://github.com/denisecase/datafun-01-foundations
+
 site_description: Project documentation.
+
 docs_dir: docs
 site_dir: site
+
 extra:
+  # WHY: Social links are optional polish; safe to remove without breaking docs.
   social:
     - icon: fontawesome/brands/github
       #TODO: Change to your GitHub repository URL.
       link: https://github.com/denisecase/datafun-01-foundations
 
-# WHY: Material theme is industry standard, well-documented
+# WHY: Material theme is industry standard, well-documented, and low maintenance.
+# CUSTOM: Explore other themes at https://mkdocs.org/about/themes/
 theme:
   name: material
   features:
@@ -53,18 +60,21 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
 
+  icon:
+    repo: fontawesome/brands/github # WHY: Familiar GitHub icon in header
+
 plugins:
   - search # WHY: Built-in search functionality
   - mkdocstrings:
       handlers:
         python:
           paths:
-            - src/python/src
+            - src/python/src # REQ: Point to source code for API docs
           options:
+            docstring_style: google # Professional docstring format
             show_source: true
             show_root_heading: true # Include module names
             show_root_toc_entry: true # Include module in TOC
-            docstring_style: google # Professional docstring format
             show_signature_annotations: true
             separate_signature: true # Makes function signatures easier to read
 
@@ -78,6 +88,7 @@ nav:
   - Variables: variables.md
   - Example Output: example-output.md
   - Docs: project-mkdocs.md
+  - Tips & Troubleshooting: pro-tips.md
 
   - ANNOTATIONS: root/ANNOTATIONS.md
   - INSTRUCTORS: root/INSTRUCTORS.md

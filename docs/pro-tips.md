@@ -26,3 +26,8 @@ Try to reinstall:
 ```shell
 uv sync --extra dev --reinstall
 ```
+
+### Errors on Git Commit
+
+If optional precommit is enabled, and you get errors it will fix things.
+After any red (failing) checks, just re-run `git add -A` and commit again.

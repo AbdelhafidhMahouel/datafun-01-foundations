@@ -201,7 +201,7 @@ uv run python src/datafun_01_foundations/app_yourname.py
 If you see output and no errors, your environment is set up correctly.
 Congratulations!
 
-Run some checks:
+Run checks and tests (if available):
 
 ```shell
 uv run ruff format .

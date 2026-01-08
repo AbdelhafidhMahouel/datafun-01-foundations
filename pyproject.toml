@@ -100,7 +100,7 @@ select = [
     "I",   # Deterministic import ordering
     "UP",  # Modern Python constructs
     "B",   # Common bug patterns
-    # "PTH", # Prefer pathlib patterns
+    "PTH", # Prefer pathlib patterns
 ]
 ignore = [
   "E501", # Final line length handled by formatter
@@ -110,12 +110,32 @@ ignore = [
 # WHY: Ordering imports helps keep code diffs (differences) readable.
 force-sort-within-sections = true
 
+# === PER-FILE IGNORES (DEPENDS ON DOCSTRING POLICY) ===
+
 [tool.ruff.lint.per-file-ignores]
 # WHY: Some files MUST NOT undergo linting or automated fixes.
-"**/__init__.py" = ["D104", "F401"]
-"tests/**/*.py" = ["D", "B018", "B011","S101"]
-"src/**/py.typed" = ["ALL"]
-"**/*.log" = ["ALL"]
+
+# POLICY: Docstring rules are NOT enabled (no "D" in [tool.ruff.lint].select).
+"src/**/__init__.py" = ["F401"]     # Allow re-export patterns
+"src/**/_version.py" = ["ALL"]      # Auto-generated file (do not lint)
+"notebooks/**/*.ipynb" = ["F821"]   # Notebooks may have runtime-defined names
+
+# OPTIONAL: If docstring rules are enabled later (add "D" to select),
+# replace the block above with the following:
+#
+# [tool.ruff.lint.per-file-ignores]
+# "src/**/__init__.py" = ["D104", "F401"]    # Allow omission + re-export patterns
+# "src/**/_version.py" = ["ALL"]             # Auto-generated file (do not lint)
+# "tests/**/*.py" = ["D"]                    # Tests have different docstring norms
+# "notebooks/**/*.ipynb" = ["F821"]          # Notebooks may have runtime-defined names
+
+# === CHOOSE PROJECT DOC STYLE ===
+
+[tool.ruff.lint.pydocstyle]
+# WHY: Choose one docstring convention project-wide to avoid mixed styles and churn.
+# REQ: Google style is the default policy for this repository.
+convention = "google" # ALT: "numpy" (choose one convention project-wide)
+
 
 # === BUILD SYSTEM ===
 
@@ -123,18 +143,32 @@ force-sort-within-sections = true
 # - `build-backend` must be a build backend (setuptools or hatchling).
 # - `setuptools_scm` is a versioning plugin, not the build backend.
 
+# === BUILD SYSTEM ===
+
+# This repository includes scripts that are not standalone: they import shared
+# modules from a package under `src/`. To make imports reliable across IDEs,
+# tests, and CI, the code must be importable as a real package.
+
+# We use a `src/` layout and configure setuptools package discovery so imports work
+# because the package is installed (often in editable mode during development).
+
+# Why:
+# - Scripts can import shared code via normal package imports (no path hacks).
+# - Prevents accidental imports from the repository root, a common pitfall.
+# - Makes type checking, testing, and CI behavior consistent.
+
+# Tradeoff:
+# - Introduces light packaging configuration (build backend and package discovery).
+#   This is intentional and required when the project contains shared modules,
+#   rather than simply a set of completely standalone scripts.
+
 [build-system]
-# WHY: Build system needed to create distributable packages.
-# CUSTOM: Using scm for dynamic version management.
-requires = [
-    "setuptools>=80.9.0",
-    "setuptools_scm>=9.2.2",
-]
+# WHY: Define the build backend and minimum build requirements.
 build-backend = "setuptools.build_meta"
+requires = ["setuptools>=80.9.0"]
 
 [tool.setuptools]
-include-package-data = true # WHY: Ensure non-code files are included in distributions.
-package-dir = {"" = "src"} # WHY: src-layout keeps code separate from config and docs.
+package-dir = { "" = "src" } # WHY: src-layout keeps code separate from config and docs.
 
 [tool.setuptools.packages.find]
 where = ["src"] # WHY: Explicitly define package discovery location.
