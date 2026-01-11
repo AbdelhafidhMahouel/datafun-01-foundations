@@ -47,8 +47,9 @@ These files:
 These commands verify code quality before enabling automated hooks.
 Before installing pre-commit hooks, run checks manually:
 
-- `uv run ruff check --fix .`
 - `uv run ruff format .`
+- `uv run ruff check --fix .`
+
 
 ### 2. Pre-commit Quality Checks
 

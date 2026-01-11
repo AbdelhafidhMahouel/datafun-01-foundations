@@ -1,6 +1,6 @@
-# Project 01 – Skills Covered and Required Knowledge
+# Skills Covered and Required Knowledge
 
-This document enumerates the skills, concepts, tools, and professional habits required to complete **Project 01**.
+This document enumerates the skills, concepts, tools, and professional habits required to complete the project.
 
 Some skills are introduced directly in this project; others are assumed, reinforced, or practiced implicitly.
 
@@ -193,8 +193,8 @@ Skills covered include:
       main()
   ```
 - Distinguishing between:
-  - running a file as a script
-  - importing it as a module
+  - running a file as a script (e.g., the app files)
+  - importing it as a module (e.g., datafun-toolkit)
 - Recognizing this pattern as standard Python practice
 
 ## 14. Side Effects vs Returned Values
@@ -212,9 +212,8 @@ Professionals must understand:
 Skills covered include:
 
 - Reading and following project instructions
-- Respecting “do not edit” guidance
 - Running provided reference code without modification
-- Using working examples as authoritative references
+- Using working examples as references
 - Seeking clarification when behavior is unclear
 
 ## 16. Professional Habits Reinforced
@@ -225,4 +224,4 @@ This project reinforces:
 - Attention to detail
 - Respect for conventions
 - Incremental learning
-- Observational debugging over guesswork
+- Observational debugging

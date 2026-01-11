@@ -4,7 +4,7 @@ This file is for instructors and maintainers of the **DataFun** project series.
 Students do **not** need to read this file to complete assignments.
 
 Its purpose is to explain _why_ the repository is structured the way it is, and to
-document policies that keep course projects consistent, repeatable, and low-friction.
+document policies that keep projects consistent, repeatable, and low-friction.
 
 ## Instructional Intent
 
@@ -79,4 +79,4 @@ Avoid changes that add novelty without instructional value.
 This file exists to avoid having to reverse-engineer decisions later.
 
 If you are reading this while teaching:
-you are encouraged to reuse, adapt, and extend this template across courses.
+you are encouraged to reuse, adapt, and extend this template as you like.

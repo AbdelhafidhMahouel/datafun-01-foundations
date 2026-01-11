@@ -19,6 +19,6 @@ def test_generate_summary_contains_expected_fields() -> None:
     assert len(result) > 0
 
     # Verify important content appears in the output
-    assert "Project name:" in result
-    assert "Project number:" in result
+    assert "Course name:" in result
+    assert "Course number:" in result
     assert "True" in result or "False" in result  # Boolean value check

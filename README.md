@@ -15,11 +15,13 @@ Then think about a good name to hold that value in code.
 
 Following the example ([`app_case.py`](./src/datafun_01_foundations/app_case.py)),
 decide on a name for each type of variable.
-Name it according to Python conventions.
-Signal the **type** of value that variable holds by using `type hints`.
-**Initialize** the variable to some value.
-After declaring these as global constant variables,
-use Python **f-strings** (formatted strings) to display the information.
+
+In this project, you will:
+
+- choose variable names according to Python conventions.
+- signal the **type** of value each variable holds by using `type hints`.
+- **initialize** each variable to a value.
+- use Python **f-strings** (formatted strings) to display information.
 
 ---
 
@@ -36,7 +38,7 @@ There are three workflows for analytics projects.
 Follow the detailed instructions at:
 [**01. Set Up Your Machine**](https://denisecase.github.io/pro-analytics-02/01-set-up-machine/)
 
-🛑 Do not continue until all these steps are complete and verified.
+🛑 All steps must be completed and verified successfully.
 
 ## 02: Set Up Project (Once Per Project)
 
@@ -61,7 +63,7 @@ cd datafun-01-foundations
 code .
 ```
 
-With VS Code open, accept the Extension Recommendations (click `Install All` when asked).
+With VS Code open, accept the Extension Recommendations (click `Install All` or similar when asked).
 Use VS Code menu option `Terminal` / `New Terminal` and run the following commands:
 
 ```shell
@@ -70,20 +72,28 @@ uv python pin 3.14
 uv sync --extra dev --extra docs --upgrade
 ```
 
-You must be in the root project folder. If successful, you'll see a new `.venv` folder appear in the repo root (look up top, typically between `.github/` and `.vscode/`).
+Optional (recommended): install and run pre-commit checks:
 
-🛑 Do not continue until all these steps are complete and verified.
+```shell
+uvx pre-commit install
+git add -A
+uvx pre-commit run --all-files
+```
+
+You must be in the root project folder. If successful, you'll see a new `.venv` folder appear in the repo root.
+
+🛑 Do not continue until all required steps are complete and verified.
 
 ## 03: Daily Workflow (Working With Python Project Code)
 
-We follow the detailed instructions at:
+Follow the detailed instructions at:
 [**03. Daily Workflow**](https://denisecase.github.io/pro-analytics-02/03-daily-workflow/)
 
 Commands are provided below to:
 
 1. Git pull
 2. Run and check the Python files
-3. Build and serve project documentation
+3. Build and serve docs
 4. Save progress with Git add-commit-push
 5. Update project files
 
@@ -118,7 +128,7 @@ uv run ruff check . --fix
 uv run pytest --cov=src --cov-report=term-missing
 ```
 
-Build and serve project documentation:
+Build and serve docs:
 
 ```shell
 uv run mkdocs build --strict
@@ -127,16 +137,17 @@ uv run mkdocs serve
 
 > To stop a running Python program, press `Ctrl+C` in the terminal
 
-Save progress:
+Save progress (some tools may make changes; re-running ensures everything is committed):
 
 ```shell
 git add -A
 git commit -m "update"
-# if any changes were made, rerun git add and git commit again
+git add -A
+git commit -m "update"
 git push -u origin main
 ```
 
-All these steps are explained in more detail in the [Pro-Analytics-02 Documentation](https://denisecase.github.io/pro-analytics-02/).
+Additional details and troubleshooting are available in the [Pro-Analytics-02 Documentation](https://denisecase.github.io/pro-analytics-02/).
 
 ---
 
@@ -179,18 +190,43 @@ Change each occurrence to point to your GitHub account instead (spacing and capi
 
 ---
 
-## Out of Scope
+## Troubleshooting
 
-- You do not need to add to or modify `tests/`. They are provided for example only.
-- You do NOT need to understand everything. Understanding grows as we go through the course.
-
-## Stuck at >>> or ...
+### Stuck at >>> or ...? You're in Python interactive mode
 
 If you see something like this in your terminal: `>>>` or `...`
 You accidentally started Python interactive mode.
+It happens.
+Press `Ctrl c` (both keys together) - or `Ctrl Z` then `Enter` on Windows.
 
-Just press `Ctrl+c` (both keys together) - or `Ctrl+Z`, then `Enter` on Windows.
+## Notes
 
-## For More
+- You do not need to add to or modify `tests/`. They are provided for examples only.
+- You do NOT need to understand everything. Understanding grows with use.
+- Use the up and down arrow keys to scroll through past commands.
+- Use CTRL f to find (and replace) with in a file.
 
-- [Tips and Suggestions](./docs/pro-tips.md)
+## Resources
+
+- [Pro-Analytics-02](<[./docs/pro-tips.md](https://denisecase.github.io/pro-analytics-02/)>) - guide to professional Python
+- [ANNOTATIONS.md](./ANNOTATIONS.md) - REQ/WHY/OBS annotations used
+- [INSTRUCTORS.md](./docs/root/INSTRUCTORS.md) - guidance and notes for instructors and maintainers
+- [POLICIES.md](./docs/root/POLICIES.md) - project rules and expectations that apply to all contributors
+- [SKILLS.md](./docs/root/SKILLS.md) - skills, concepts, and professional practices (there are many)
+- [SE_MANIFEST.toml](./SE_MANIFEST.toml) - project intent, scope, and role
+
+## Citation
+
+[CITATION.cff](./CITATION.cff) - TODO: update author and repository fields to reflect your creative work
+
+<!--
+WHY: Support correct citation and attribution.
+-->
+
+## License
+
+[MIT](./LICENSE)
+
+<!--
+WHY: Provide terms of reuse and limits of liability.
+-->

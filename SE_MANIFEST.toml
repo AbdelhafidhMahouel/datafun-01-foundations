@@ -12,6 +12,7 @@ framework_url = "https://github.com/structural-explainability"
 framework_note = "Provides definitions and conventions for SE_MANIFEST semantics."
 description = "Declarative claim of repository intent, scope, and role."
 purpose = "To make explicit the boundaries, responsibilities, and expectations of this repository relative to others."
+keywords_note = "Keywords live only in CITATION.cff (canonical)."
 
 [repo]
 name = "datafun-01-foundations"
@@ -19,22 +20,27 @@ org = "denisecase"
 kind = "software"
 status = "academic"
 since = "2026"
-summary = "Data Analytics Fundamentals Project 01."
+summary = "Data Analytics Fundamentals Project 01: professional Python project setup, Git workflows, and baseline module/script execution."
 
 [layer]
 space = "Data Analytics"
 role = "post-secondary-education"
 
 [depends]
+# WHY: These tools are required to complete and run the project as designed
+#      (local development, execution, and dependency management).
 required = [
-  "python>=3.12",
-  "uv"
+  "python>=3.14",
+  "uv",
+  "git",
 ]
+# WHY: Optional tools are not required to use or run the repository.
 optional = [
   "mkdocs",
   "ruff",
   "pyright",
-  "pytest"
+  "pytest",
+  "lychee",
 ]
 
 [provides]
@@ -50,13 +56,13 @@ artifacts = [
 [scope]
 includes = [
     "basic Git workflows (clone, commit, push, pull)",
-    "Python module creation and execution",
-    "use of standard Python main() execution pattern",
-    "local Python virtual environment usage (.venv)",
-    "dependency management via pyproject.toml and uv",
-    "use of external packages for logging and diagnostics",
-    "basic variables and functions in Python",
-    "professional IDE-based development workflows",
+    "create and run Python modules and scripts",
+    "use the standard Python main() execution pattern",
+    "use a local Python virtual environment (.venv) managed by uv",
+    "manage dependencies via pyproject.toml and uv",
+    "use external packages for logging and diagnostics",
+    "use basic variables, functions, and control flow in Python",
+    "use professional IDE-based development workflows",
 ]
 excludes = [
     "advanced data analysis techniques",

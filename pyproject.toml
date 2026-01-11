@@ -1,19 +1,21 @@
 # ============================================================
 # pyproject.toml (Python and MkDocs project configuration)
 # ============================================================
+# VARIANT: python-mkdocs
+# SOURCE: https://github.com/denisecase/templates
 
 # REQ.PYTHON: Python projects MUST include pyproject.toml as the single source of truth.
 # WHY: Centralizes project configuration.
 
 [project]
 name = "datafun-01-foundations" # CUSTOM: Package distribution name (use lowercase and dashes).
-version="0.1.0"  # WHY: start with initial version.
 readme = "README.md"
 requires-python = ">=3.14"
+version = "0.1.0"
 
 dependencies = [
     # REQ.DEPS: External packages used by the project code.
-    "datafun-toolkit>=0.9.0",
+    "datafun-toolkit>=0.9.4",
 ]
 
 [project.optional-dependencies]
@@ -25,7 +27,7 @@ dev = [
     "pre-commit>=4.5.1",
     "pytest>=9.0.2",
     "pytest-cov>=7.0.0",
-    "pyright>=1.1.407",
+    "pyright>=1.1.408",
     "ruff>=0.14.10",
     "validate-pyproject>=0.24.1",
 ]
@@ -82,7 +84,7 @@ exclude = [
 ]
 line-length = 88 # WHY: PEP 8 standard line length, wrap when possible.
 preview = false # WHY: Stable features only; avoid preview features.
-target-version = "py312"
+target-version = "py313" # WHY: Match latest supported Python version.
 unsafe-fixes = false # WHY: Avoid potentially unsafe automatic fixes.
 
 [tool.ruff.format]
@@ -136,39 +138,32 @@ force-sort-within-sections = true
 # REQ: Google style is the default policy for this repository.
 convention = "google" # ALT: "numpy" (choose one convention project-wide)
 
-
 # === BUILD SYSTEM ===
-
-# REQ.BUILD:
-# - `build-backend` must be a build backend (setuptools or hatchling).
-# - `setuptools_scm` is a versioning plugin, not the build backend.
-
-# === BUILD SYSTEM ===
-
-# This repository includes scripts that are not standalone: they import shared
-# modules from a package under `src/`. To make imports reliable across IDEs,
-# tests, and CI, the code must be importable as a real package.
-
-# We use a `src/` layout and configure setuptools package discovery so imports work
-# because the package is installed (often in editable mode during development).
-
-# Why:
-# - Scripts can import shared code via normal package imports (no path hacks).
-# - Prevents accidental imports from the repository root, a common pitfall.
-# - Makes type checking, testing, and CI behavior consistent.
-
-# Tradeoff:
-# - Introduces light packaging configuration (build backend and package discovery).
-#   This is intentional and required when the project contains shared modules,
-#   rather than simply a set of completely standalone scripts.
+#
+# REQ.PROJECT:
+#   This project MUST define a build system so that local Python modules
+#   can be discovered and imported reliably.
+#
+# WHY:
+#   Although this project is not published to PyPI, tools such as editors,
+#   test runners, and CI need a consistent way to locate importable code.
+#
+# REQ.STRUCTURE:
+#   All importable Python code MUST live under src/.
+#
+# WHY:
+#   A src/ layout prevents accidental imports from the repository root and
+#   ensures consistent behavior across IDEs, tests, and command-line runs.
 
 [build-system]
-# WHY: Define the build backend and minimum build requirements.
+# REQ.BUILD: A build backend MUST be declared to enable package discovery.
 build-backend = "setuptools.build_meta"
 requires = ["setuptools>=80.9.0"]
 
 [tool.setuptools]
-package-dir = { "" = "src" } # WHY: src-layout keeps code separate from config and docs.
+# REQ.PACKAGES: Package discovery MUST be rooted at src/.
+package-dir = { "" = "src" }
 
 [tool.setuptools.packages.find]
-where = ["src"] # WHY: Explicitly define package discovery location.
+# WHY: Explicitly define package discovery location.
+where = ["src"]

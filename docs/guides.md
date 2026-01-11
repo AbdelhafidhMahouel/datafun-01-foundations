@@ -10,6 +10,6 @@ For those starting new, see the shared foundations guide.
 
 For detailed, step-by-step guidance on setting up your machine,
 initializing projects, and following a professional daily workflow,
-see the shared course documentation.
+see:
 
 - [**Pro Analytics 02: Setup and Workflow Guide**](https://denisecase.github.io/pro-analytics-02/)
