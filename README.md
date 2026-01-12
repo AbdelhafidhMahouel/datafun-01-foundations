@@ -49,7 +49,7 @@ Detailed instructions are provided to:
 
 1. Sign in to GitHub, open this repository in your browser, and click **Copy this template** to get a copy in **YOURACCOUNT**.
 2. Enable GitHub Pages.
-3. Open a machine terminal in your `Repos` folder and clone your new repo.
+3. Open a **machine terminal** in your `Repos` folder and clone your new repo.
 4. Change directory into the repo, open the project in VS Code, and install recommended extensions.
 5. Set up a project Python environment (managed by `uv`) and align VS Code with it.
 
@@ -63,8 +63,10 @@ cd datafun-01-foundations
 code .
 ```
 
-With VS Code open, accept the Extension Recommendations (click `Install All` or similar when asked).
-Use VS Code menu option `Terminal` / `New Terminal` and run the following commands:
+When VS Code opens, accept the Extension Recommendations (click **`Install All`** or similar when asked).
+
+Use VS Code menu option `Terminal` / `New Terminal` to open a **VS Code terminal** in the root project folder.
+Run the following commands, one at a time, hitting ENTER after each:
 
 ```shell
 uv self update
@@ -72,17 +74,21 @@ uv python pin 3.14
 uv sync --extra dev --extra docs --upgrade
 ```
 
-Optional (recommended): install and run pre-commit checks:
+If asked: "We noticed a new environment has been created. Do you want to select it for the workspace folder?" Click **"Yes"**.
+
+If successful, you'll see a new `.venv` folder appear in the root project folder.
+
+Optional (recommended): install and run pre-commit checks (repeat the git `add` and `commit` twice if needed):
 
 ```shell
 uvx pre-commit install
 git add -A
 uvx pre-commit run --all-files
+git add -A
+uvx pre-commit run --all-files
 ```
 
-You must be in the root project folder. If successful, you'll see a new `.venv` folder appear in the repo root.
-
-🛑 Do not continue until all required steps are complete and verified.
+🛑 Do not continue until all REQUIRED steps are complete and verified.
 
 ## 03: Daily Workflow (Working With Python Project Code)
 
@@ -104,7 +110,7 @@ Use VS Code menu option `Terminal` / `New Terminal` and run the following comman
 git pull
 ```
 
-In the same VS Code terminal, run the files:
+In the same VS Code terminal, run any Python source files:
 
 ```shell
 uv run python src/datafun_01_foundations/app_case.py
@@ -113,12 +119,11 @@ uv run python src/datafun_01_foundations/app_yourname.py
 
 If a command fails, verify:
 
-- Only the datafun-01-foundations project is open in VS Code.
+- Only this project is open in VS Code.
 - The terminal is open in the project root folder.
 - The `uv sync --extra dev --extra docs --upgrade` command completed successfully.
 
 Hint: if you run `ls` in the terminal, you should see files including `pyproject.toml`, `README.md`, and `uv.lock`.
-Once these scripts run, that is a major milestone for Project 1. Celebrate!
 
 Run Python checks and tests (as available):
 
@@ -128,16 +133,16 @@ uv run ruff check . --fix
 uv run pytest --cov=src --cov-report=term-missing
 ```
 
-Build and serve docs:
+Build and serve docs (hit **CTRL+c** in the VS Code terminal to quit serving):
 
 ```shell
 uv run mkdocs build --strict
 uv run mkdocs serve
 ```
 
-> To stop a running Python program, press `Ctrl+C` in the terminal
+While editing project code and docs, repeat the commands above to run files, check them, and rebuild docs as needed.
 
-Save progress (some tools may make changes; re-running ensures everything is committed):
+Save progress frequently (some tools may make changes; **re-running add and commit** ensures everything gets committed):
 
 ```shell
 git add -A
@@ -190,21 +195,21 @@ Change each occurrence to point to your GitHub account instead (spacing and capi
 
 ---
 
-## Troubleshooting
+## Notes
 
-### Stuck at >>> or ...? You're in Python interactive mode
+- You do not need to add to or modify `tests/`. They are provided for example only.
+- You do not need to view or modify any of the supporting **config files**.
+- Many of the repo files are silent helpers. Explore as you like, but nothing is required.
+- You do NOT need to understand everything. Understanding builds naturally over time.
+- Use the **UP ARROW** and **DOWN ARROW** in the terminal to scroll through past commands.
+- Use `CTRL+f` to find (and replace) with in a file.
+
+## Troubleshooting >>> or ...
 
 If you see something like this in your terminal: `>>>` or `...`
 You accidentally started Python interactive mode.
 It happens.
-Press `Ctrl c` (both keys together) - or `Ctrl Z` then `Enter` on Windows.
-
-## Notes
-
-- You do not need to add to or modify `tests/`. They are provided for examples only.
-- You do NOT need to understand everything. Understanding grows with use.
-- Use the up and down arrow keys to scroll through past commands.
-- Use CTRL f to find (and replace) with in a file.
+Press `Ctrl+c` (both keys together) or `Ctrl+Z` then `Enter` on Windows.
 
 ## Resources
 
