@@ -115,7 +115,7 @@ In the same VS Code terminal, run any Python source files:
 
 ```shell
 uv run python src/datafun_01_foundations/app_case.py
-uv run python src/datafun_01_foundations/app_yourname.py
+uv run python src/datafun_01_foundations/app_abdelhafidh_mahouel.py
 ```
 
 If a command fails, verify:
@@ -234,3 +234,4 @@ WHY: Support correct citation and attribution.
 <!--
 WHY: Provide terms of reuse and limits of liability.
 -->
+
