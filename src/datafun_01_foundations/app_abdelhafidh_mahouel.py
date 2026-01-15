@@ -95,11 +95,11 @@ def get_statistics() -> str:
 
     # Example : Calculate count of measurements.
     count: int = len(snowfall_inches)
-    
+
     # Calculate minimum and maximum snowfall.
     minimum: float = min(snowfall_inches) if count > 0 else 0.0
     maximum: float = max(snowfall_inches) if count > 0 else 0.0
-    
+
     # Use the statistics module to calculate average.
     average: float = statistics.mean(snowfall_inches) if count > 0 else 0.0
 
